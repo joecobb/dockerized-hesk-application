@@ -31,3 +31,9 @@ services:
       - PMA_ARBITRARY=1
     depends_on:
       - db
+  cron-service:
+    container_name: cron-service
+    build:
+      context: ./cron/
+      dockerfile: Dockerfile
+    

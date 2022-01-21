@@ -1,0 +1,2 @@
+* * * * * root echo "Hello From Container $(date). This can be replaced with a shell script" >> /var/log/cron.log 2>&1
+# Empty Line
