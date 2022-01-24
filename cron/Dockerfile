@@ -4,16 +4,24 @@ LABEL Author Joseph
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/hello-cron
 
+ADD hello.sh /root/hello.sh
+ADD hello.php /root/hello.php
+
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/hello-cron
+
+# Give execution rights on the script
+RUN chmod 0777 /root/hello.sh
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-#Install Cron
+# Install Cron
 RUN apt-get update
 RUN apt-get -y install cron
 
+# Install php
+RUN apt -y install php-fpm
 
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
